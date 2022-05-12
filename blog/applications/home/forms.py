@@ -1,7 +1,7 @@
 from django import forms
 
 #models
-from .models import Suscribers
+from .models import Suscribers, Contact
 
 class SuscribersForm(forms.ModelForm):
     """Definición de formulario para Suscribers"""
@@ -20,3 +20,13 @@ class SuscribersForm(forms.ModelForm):
                 }
             )
         }
+
+
+class ContactForm(forms.ModelForm):
+    """Definiciones del formulario de contacto."""
+
+    class Meta:
+        """Definición de los Meta del Contactform."""
+
+        model = Contact
+        fields = ('__all__')
