@@ -1,8 +1,11 @@
 from django.db import models
 from django.conf import settings
-
+#apps de terceros
 from model_utils.models import TimeStampedModel
 from ckeditor_uploader.fields import RichTextUploadingField
+
+#managers
+from .managers import EntryManager
 
 
 class Category(TimeStampedModel):
@@ -17,6 +20,7 @@ class Category(TimeStampedModel):
         'Nombre',
         max_length=30
     )
+
 
     class Meta:
         verbose_name = 'Categoría'
@@ -71,6 +75,8 @@ class Entry(TimeStampedModel):
         editable=False, 
         max_length=300
     )
+
+    objects = EntryManager()
 
     class Meta:
             verbose_name = 'Entrada'

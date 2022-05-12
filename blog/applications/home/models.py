@@ -15,7 +15,7 @@ class Home(TimeStampedModel):
         max_length=50
     )
     about_tex = models.TextField()
-    contact_email = models.TextField(
+    contact_email = models.EmailField(
         'email de contacto',
         blank=True,
         null=True
