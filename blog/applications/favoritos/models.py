@@ -7,7 +7,7 @@ from applications.entrada.models import Entry
 
 
 class Favorites(TimeStampedModel):
-
+    """Modelo para favoritos"""
 
     user =  models.ForeignKey(
         settings.AUTH_USER_MODEL,

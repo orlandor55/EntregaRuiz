@@ -1,7 +1,4 @@
 from django.db import models
-
-# Create your models here.
-from django.db import models
 from django.conf import settings
 
 from model_utils.models import TimeStampedModel
@@ -9,7 +6,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 
 
 class Category(TimeStampedModel):
-
+    """Modelo de Categorías para las entradas"""
 
     short_name = models.CharField(
         'Nombre corto',
@@ -30,7 +27,7 @@ class Category(TimeStampedModel):
 
 
 class Tag(TimeStampedModel):
-
+    """Modelo para las etiquetas a usar en SEO"""
 
     name = models.CharField(
         'Nombre',
@@ -46,6 +43,8 @@ class Tag(TimeStampedModel):
 
 
 class Entry(TimeStampedModel):
+    """Modelo para las entradas del blog"""
+    
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE

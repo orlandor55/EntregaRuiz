@@ -3,6 +3,7 @@ from model_utils.models import TimeStampedModel
 
 
 class Home(TimeStampedModel):
+    """Modelo para la pantalla de home"""
 
     title = models.CharField(
         'Nombre',
@@ -33,6 +34,7 @@ class Home(TimeStampedModel):
 
 
 class Suscribers(TimeStampedModel):
+    """Modelo para suscriptores"""
 
     email = models.EmailField()
 
@@ -45,6 +47,8 @@ class Suscribers(TimeStampedModel):
 
 
 class Contact(TimeStampedModel):
+    """Modelo para formulario de contacto"""
+    
     full_name = models.CharField(
         'Nombres',
         max_length=60
@@ -58,6 +62,3 @@ class Contact(TimeStampedModel):
 
     def __str__(self):
         return self.full_name
-
-
-
