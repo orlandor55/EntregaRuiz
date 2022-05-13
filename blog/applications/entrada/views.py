@@ -2,6 +2,7 @@ from unicodedata import category
 from django.shortcuts import render
 from django.views.generic import (
     ListView,
+    DetailView,
 )
 
 #models
@@ -27,3 +28,8 @@ class EntryListView(ListView):
 
         return queryset
 
+
+
+class EntryDetailView(DetailView):
+    model = Entry
+    template_name = "entrada/detail.html"
