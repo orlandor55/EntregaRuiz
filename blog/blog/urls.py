@@ -10,7 +10,7 @@ urlpatterns_local = [
     re_path('', include('applications.users.urls')),
     re_path('', include('applications.home.urls')),
     re_path('', include('applications.entrada.urls')),
-    #re_path('', include('applications.favoritos.urls')),
+    re_path('', include('applications.favoritos.urls')),
 
 ]
 
