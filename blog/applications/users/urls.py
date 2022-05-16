@@ -26,4 +26,9 @@ urlpatterns = [
         views.UpdatePasswordView.as_view(),
         name='user-update',
     ),
+    path(
+        'update-user/<pk>', 
+        views.UserUpdateView.as_view(),
+        name='user-profile-update',
+    ),
 ]

@@ -1,4 +1,6 @@
+from multiprocessing import context
 from tkinter import Widget
+from turtle import update
 from django import forms
 from django.contrib.auth import authenticate
 #
@@ -116,3 +118,42 @@ class UpdatePasswordForm(forms.Form):
             }
         )
     )
+
+
+class UserUpdateForm(forms.ModelForm):
+
+    class Meta:
+        """Meta definition for Userform."""
+
+        model = User
+        fields = (
+            'email',
+            'full_name',
+            'ocupation',
+            'genero',
+            'date_birth',
+        )
+        widgets = {
+            'email': forms.EmailInput(
+                attrs={
+                    'placeholder': 'Correo electónico...'
+                }
+            ),
+            'full_name': forms.TextInput(
+                attrs={
+                    'placeholder': 'Nombre...'
+                }
+            ),
+            'ocupation': forms.TextInput(
+                attrs={
+                    'placeholder': 'Ocupación...'
+                }
+            ),
+            'date_birth': forms.DateInput(
+                attrs={
+                    'type': 'date',
+                    
+                }
+            ),
+        }
+    

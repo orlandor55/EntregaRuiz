@@ -11,7 +11,7 @@ urlpatterns = [
         name='profile',
     ),
     path(
-        'add-favorite-entry/<pk>/', 
+        'add-favorite-entry/<slug>/', 
         views.AddFavoriteView.as_view(),
         name='add-favorites',
     ),

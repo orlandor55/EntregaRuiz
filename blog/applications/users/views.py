@@ -1,5 +1,3 @@
-from django.shortcuts import render
-from django.core.mail import send_mail
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -7,7 +5,9 @@ from django.http import HttpResponseRedirect
 
 from django.views.generic import (
     View,
-    CreateView
+    TemplateView,
+    UpdateView,
+    
 )
 
 from django.views.generic.edit import (
@@ -18,6 +18,7 @@ from .forms import (
     UserRegisterForm, 
     LoginForm,
     UpdatePasswordForm,
+    UserUpdateForm,
 )
 #
 from .models import User
@@ -89,3 +90,13 @@ class UpdatePasswordView(LoginRequiredMixin, FormView):
 
         logout(self.request)
         return super(UpdatePasswordView, self).form_valid(form)
+
+class UpdateSuccessView(TemplateView):
+    template_name = reverse_lazy('users_app:user-login')
+
+class UserUpdateView(LoginRequiredMixin, UpdateView):
+    model = User
+    template_name = "users/update_user.html"
+    form_class = UserUpdateForm
+    success_url = reverse_lazy('favorites_app:profile')
+    login_url = reverse_lazy('users_app:user-login')

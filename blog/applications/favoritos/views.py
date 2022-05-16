@@ -1,3 +1,4 @@
+from django.forms import SlugField
 from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
@@ -30,18 +31,23 @@ class AddFavoriteView(LoginRequiredMixin, View):
     def post(self, request, *args, **kwargs):
         
         usuario = self.request.user
-        entrada = Entry.objects.get(id=self.kwargs['pk'])
-        Favorites.objects.create(
+        entrada = Entry.objects.get(slug=self.kwargs['slug'])
+        try:
+            Favorites.objects.create(
             user=usuario,
             entry=entrada,
-        )
-
-        return HttpResponseRedirect(
+            )
+            return HttpResponseRedirect(
             reverse(
                 'favorites_app:profile'
-            )
-        )
-
+                )
+             )
+        except:
+            return HttpResponseRedirect(
+            reverse(
+                'favorites_app:profile'
+                )
+             )
 
 
 class FavoritesDeleteView(DeleteView):

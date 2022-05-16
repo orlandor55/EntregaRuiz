@@ -12,7 +12,7 @@
             <div class="callout">
                 <h5>{{user.full_name}}</h5>
                 <p>{{user.email}} - {{user.ocupation}} - {{user.date_birth}}</p>
-                <a href="#">Editar Datos</a>
+                <a href="{% url 'users_app:user-profile-update' user.id %}">Editar Datos</a>
                 <p>
                     <a href="{% url 'users_app:user-logout' %}" class="clear button secondary">
                         Cerrar Sesión
@@ -34,7 +34,7 @@
                             <h3 class="card-favoritos-body-titulo">{{entrada.entry.title}}</h3>
                             <p class="card-favoritos-body-text">{{entrada.entry.resume}}</p>
                             <form class="card-favoritos-body-actions" method="post" action="{% url 'favorites_app:delete-favorites' entrada.id %}">{% csrf_token %}
-                                <a class="button warning" href="{% url 'entrada_app:entry-detail' entrada.entry.id %}">Ver</a>
+                                <a class="button warning" href="{% url 'entrada_app:entry-detail' entrada.entry.slug %}">Ver</a>
                                 <button type="submit" class="button alert">Eliminar</button>
                             </form>
                         </div>

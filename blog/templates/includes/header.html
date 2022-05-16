@@ -1,7 +1,7 @@
 <header>
     <div class="grid-x grid-margin-x header">
         <div class="cell small-12 medium-4 large-3">
-            <a href="#" style="font-size: 20px; color: #0277bd;">
+            <a href="/" style="font-size: 20px; color: #0277bd;">
                 La Familia's Blog
             </a>
         </div>
@@ -19,6 +19,10 @@
                 <li>
                     {% if not user.is_anonymous %}
                         <a href="{% url 'favorites_app:profile' %}" class="warning button">{{user.full_name}} - Perfil</a>
+                        <li>
+                        <a href="{% url 'users_app:user-logout' %}" class="clear button secondary">
+                            Cerrar Sesión
+                        </a></li>
                     {% else %}
                         <a href="{% url 'users_app:user-login' %}" class="success button">Acceder</a>
                     {% endif %}
