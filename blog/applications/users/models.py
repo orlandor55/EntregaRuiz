@@ -44,3 +44,10 @@ class User(AbstractBaseUser, PermissionsMixin):
     
     def get_full_name(self):
         return self.full_name
+
+    class Meta:
+        verbose_name = 'Usuario'
+        verbose_name_plural = 'Usuarios'
+
+    def __str__(self):
+        return self.full_name

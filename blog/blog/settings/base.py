@@ -42,6 +42,7 @@ LOCAL_APPS = (
     'applications.home',
     'applications.entrada',
     'applications.favoritos',
+    'applications.pages',
 )
 
 THIRD_PARTY_APPS = (
