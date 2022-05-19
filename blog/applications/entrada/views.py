@@ -1,12 +1,19 @@
 from django.views.generic import (
     ListView,
     DetailView,
+    CreateView,
+    UpdateView
 )
 
 #models
 from .models import Category, Entry
+#forms
+from .forms import EntryForm
 
-
+from django.contrib.admin.views.decorators import staff_member_required
+from django.utils.decorators import method_decorator
+from applications.page.views import StaffRequiredMixin
+from django.urls import reverse_lazy
 
 class EntryListView(ListView):
     template_name = "entrada/lista.html"
@@ -31,3 +38,12 @@ class EntryListView(ListView):
 class EntryDetailView(DetailView):
     model = Entry
     template_name = "entrada/detail.html"
+
+
+@method_decorator(staff_member_required, name='dispatch')
+class EntryCreateView(CreateView):
+    model = Entry
+    form_class = EntryForm
+    template_name = "entrada/entry_create.html"
+    success_url = reverse_lazy('entrada_app:entry-list')
+

@@ -54,7 +54,8 @@ class Entry(TimeStampedModel):
     
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        verbose_name='Autor'
     )
     category = models.ForeignKey(
         Category,
@@ -65,7 +66,12 @@ class Entry(TimeStampedModel):
         'Título',
         max_length=200
     )
-    resume = models.TextField('Resumen')
+    sub_title = models.CharField(
+        'Subtitulo',
+        max_length=200,
+        blank=True
+    )
+    resume = RichTextUploadingField('Resumen', max_length=300)
     content = RichTextUploadingField('contenido')
     public = models.BooleanField(default=False)
     image = models.ImageField(

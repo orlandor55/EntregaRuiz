@@ -1,4 +1,4 @@
-{% extends "entrada/base_entrada.html" %}
+{% extends "pages/base_pages.html" %}
 {% load  static %}
 
 {% block content %}
@@ -23,14 +23,14 @@
             <!-- inicio bloque de resultados de busqueda -->
             <div class="grid-x grid-margin-x">
                 
-                {% for entrada in entradas %}
-                <div class="cell small-6 large-4">
+                {% for pagina in paginas %}
+                <div class="cell small-6 large-12">
                     <div class="card" style="width: 100%;">
-                        <img src="{{ entrada.image.url }}" style="height: 155px;">
                         <div class="card-section">
-                          <h4><a href="{% url 'entrada_app:entry-detail' entrada.slug %}">{{ entrada.title }}.</a></h4>
-                          <p>{{ entrada.resume | truncatechars:155 }}.</p>
+                          <h4><a href="{% url 'pages_app:page-detail' pagina.slug %}">{{ pagina.title }}.</a></h4>
+                          <p>{{ pagina.resume | truncatechars:155 | safe}}.</p>
                         </div>
+                        {{ pagina.pagemodel.slug }}
                     </div>
                 </div>
                 {% empty %}
@@ -41,21 +41,6 @@
 
         </div>
         <!-- FIN primer bloque pantalla blog -->
-
-
-        <!-- inicio del segundo bloque - categorias -->
-        <div class="cell small-12 large-4" style="height: 500px;">
-            <h4>Categorias</h4>
-            <ul class="vertical menu">
-                
-                <li><a href="?">Todos</a></li>
-                {% for categoria in categorias %}
-                <li><a href="?categoria={{ categoria.short_name }}">{{categoria.name}}</a></li>
-            {% endfor %}
-            </ul>
-        </div>
-        <!-- FIN inicio del segundo bloque - categorias -->
-    
     </div>
 </div>
 {% include "includes/footer.html" %}

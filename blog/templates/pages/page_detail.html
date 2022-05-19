@@ -1,0 +1,30 @@
+{% extends "pages/base_pages.html" %}
+{% block description %} <meta name="description" content="{{pagemodel.resume}}"> {% endblock description %}
+{% load  static %}
+
+{% block content %}
+
+{% include "includes/header.html" %}
+{% include "includes/menu.html" %}
+
+<div class="grid-container">
+    <div class="grid-x grid-margin-x" style="margin-top: 1em;">
+        <h1 class="cell">{{pagemodel.title}}</h1>
+
+        <!-- bloque de contenido del articulo -->
+        <div class="cell large-8">
+            <div class="cell callout primary">
+                <h5>Resumen: </h5>
+                <p>{{pagemodel.resume | safe}}</p>
+            </div>
+            <div>
+                <p>{{ pagemodel.content | safe }}</p>
+            </div>
+        </div>
+        <!-- FIN bloque contenido del articulo -->
+
+    </div>
+</div>
+{% include "includes/footer.html" %}
+
+{% endblock content %}

@@ -15,4 +15,9 @@ urlpatterns = [
         views.EntryDetailView.as_view(),
         name='entry-detail',
     ),
+    path(
+        'create/', 
+        views.EntryCreateView.as_view(),
+        name='entry-create',
+    ),
 ]

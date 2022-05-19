@@ -5,6 +5,7 @@
 {% block content %}
 
 {% include "includes/header.html" %}
+{% include "includes/menu.html" %}
 
 <div class="grid-container">
     <div class="grid-x grid-margin-x" style="margin-top: 1em;">
@@ -18,6 +19,9 @@
             </div>
             <div>
                 <p>{{ entry.content | safe }}</p>
+            </div>
+            <div>
+                <h4>Autor: {{entry.user}} </h4>
             </div>
         </div>
         <!-- FIN bloque contenido del articulo -->

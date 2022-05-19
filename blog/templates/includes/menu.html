@@ -1,0 +1,32 @@
+{% load static %}
+{% if request.user.is_staff %}
+<div class="grid-x grid-margin-x header">
+    <div class="cell small-12 medium-4 large-2">
+        <p style="font-size: 18px; color: #437491;">
+            Administrar
+        </p>
+    </div>
+    <div class="cell small-12 medium-4">
+        
+    </div>
+    <div class="cell small-12 large-5">
+        <ul class="menu" style="justify-content: flex-end;">
+            
+            <li>
+                <a href="{% url 'pages_app:page-list' %}" class="clear button secondary">Páginas</a>
+            </li>
+           <li>
+                <a href="{% url 'pages_app:page-create' %}" class="clear button secondary">
+                    Nva Página
+                </a>
+            </li>
+            <li>
+                <a href="{% url 'entrada_app:entry-create' %}" class="clear button secondary">Nva Publicación</a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+    
+{% endif %}
+    

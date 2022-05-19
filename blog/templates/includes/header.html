@@ -1,6 +1,6 @@
 <header>
     <div class="grid-x grid-margin-x header">
-        <div class="cell small-12 medium-4 large-3">
+        <div class="cell small-12 medium-4 large-2">
             <a href="/" style="font-size: 20px; color: #0277bd;">
                 La Familia's Blog
             </a>
@@ -13,6 +13,16 @@
                 <li>
                     <a href="/">Home</a>
                 </li>
+                
+                  
+                    <li>{% if request.path != '/pages/quienes-somos-67802/' %}
+                        <a href="../pages/quienes-somos-67802/">Nosotros</a>
+                        {% else %} 
+                        <a href="#">Nosotros</a>
+                        {% endif %}
+                    </li>
+                
+            
                 <li>
                     <a href="{% url 'entrada_app:entry-list' %}">Blog</a>
                 </li>

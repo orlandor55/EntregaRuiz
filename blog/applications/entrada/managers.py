@@ -1,6 +1,3 @@
-from pickle import TRUE
-from turtle import title
-from unicodedata import category
 from django.db import models
 
 class EntryManager(models.Manager):
